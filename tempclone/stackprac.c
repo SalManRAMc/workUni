@@ -17,9 +17,9 @@ int push(char newest_item, char *stack, int *index, int size)
     return (*index);
 }
 
-int isempty(char *stack)
+int isempty(int *index)
 {
-	if (!stack)
+	if (*index <= 0)
 		printf("stack is empty\n");
 	else
 		printf("stack isn't empty\n");
@@ -40,15 +40,23 @@ int pop(char *stack, int *index)
 
 int top(char *stack,int *index)
 {
-	printf("%c with index %i is currently at the top of stack\n", stack[*index], *index);
-	return (0);
+	if (*index >= 0)
+	{
+	printf(" %c with index %i is currently at the top of stack\n", stack[*index - 1], *index - 1);
+	return (stack[*index]);
+	}
+	else
+	{
+		printf("stack is empty\n");
+		return (0);
+	}
 }
 int main(__attribute__((unused)) int argc, __attribute__((unused))char **argv) {
     int index = 0, size = 10;
     char stack[10];
     char x = 'a', y = 'b', z = 'c';
 
-	isempty(stack);
+	isempty(&index);
     push(x, stack, &index, size);
     push(y, stack, &index, size);
     push(z, stack, &index, size);
@@ -56,7 +64,7 @@ int main(__attribute__((unused)) int argc, __attribute__((unused))char **argv) {
 	top(stack, &index);
 	pop(stack, &index);
 	top(stack, &index);
-	isempty(stack);
+	isempty(&index);
 
     return 0;
 }
