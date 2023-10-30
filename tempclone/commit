@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [-z "$1" ]
+then
+	echo "Missing commit message"
+	exit 1
+fi
+
+commit_message=$1
+git add .; git commit "$commit_message"; git push
+
+#check later
