@@ -1,7 +1,7 @@
 #include <stdio.h> 
 #include <stdlib.h>
 
-char input[50] = { '(','(',')',')' };
+char input[50] = { '(',')',')' };
 int isempty();
 int push(char input);
 int pop();
